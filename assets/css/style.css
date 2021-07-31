@@ -5,19 +5,19 @@
 }
 
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif
 }
 
 #navbar {
-    background: #333;
+    background: #242526;
     opacity: 0.9;
-    color: #fff;
+    color: #Fdfcfa;
     overflow: auto;
     font-size: 18px;
 }
 
 #navbar a {
-    color: #fff;
+    color: #Fdfcfa;
 }
 
 #navbar .logo {
@@ -43,10 +43,25 @@ body {
 }
 
 #navbar ul li a:hover{
-    background: #C4A484;
+    background: #3A3B3C;
 }
 
 .showcase {
     background: url('../images/friends.jpg') no-repeat center center/cover;
     height: 600px;
+}
+
+.main-text {
+    font-size: 25px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+.search-bar {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    padding-top: 0;
+    padding: 55px 15px;
 }
