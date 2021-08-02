@@ -50,7 +50,9 @@ header{
 #navbar ul li a:hover{
     background: #a43232;
 }
-
+.logo{
+    font-size: 100%;
+}
 .showcase {
     background: url('../images/friends.jpg') no-repeat center center/cover;
     background-attachment: fixed;
@@ -64,7 +66,7 @@ header{
     margin:5% auto;
 }
 
-.search-bar {
+.search-bar{
     width: 70%;
     display: block;
     margin: 0 auto;
@@ -90,5 +92,49 @@ header{
 .flex {
     display: flex;
     justify-content: center;
-  }
+}
+.weather, .activities {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    background-color: #252525;
+    color: #f2f2f2;
+    padding: 8px;
+    font-size: 2vw;
+}
+.activities{
+    margin-top: 20px;
+}
 
+#weather-details{
+   padding: 0 !important;
+}
+
+.three-weather{
+    background-color:rgba(164, 50, 50,0.5);
+    color: #f2f2f2;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    width: 70%;
+    height:50%;
+    margin: 0 auto;
+}
+#activities-details{
+    background-color:rgba(164, 50, 50,0.5) ;
+    color: #f2f2f2;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.display_btn{
+    display: block;
+    background-color:rgba(164, 50, 50,0) ;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 2vw;
+    text-align: left;
+    padding: 4px;
+    cursor: pointer;
+}
