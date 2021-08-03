@@ -28,7 +28,6 @@ header{
     float: left;
     padding-top: 20px;
     padding-left: 20px;
-    font-weight: bold;
 }
 
 #navbar ul {
@@ -52,6 +51,10 @@ header{
 }
 .logo{
     font-size: 100%;
+}
+.text-primary {
+    color: #a43232;
+    font-size: 25px;
 }
 .showcase {
     background: url('../images/friends.jpg') no-repeat center center/cover;
@@ -103,7 +106,8 @@ header{
     font-size: 2vw;
 }
 .activities{
-    margin-top: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 #weather-details{
@@ -138,3 +142,82 @@ header{
     padding: 4px;
     cursor: pointer;
 }
+#about-info .info-right {
+    float: right;
+    width: 50%;
+    min-height: 100%;
+    margin-top: 25px;
+}
+
+#about-info .info-right img {
+    display: block;
+    margin: auto;
+    width: 70%;
+    border-radius: 50%;
+}
+
+/* About Page */
+.container {
+    margin: auto;
+    max-width: 1100px;
+    overflow: auto;
+    padding: 0 20px;
+}
+
+#about-info .info-left {
+    float: left;
+    width: 50%;
+    min-height: 100%;
+}
+
+#testimonials {
+    height: 100%;
+    background: url('../images/test-bg.jpg') no-repeat center center/cover;
+    padding-top: 100px;
+    border-radius: 5px;
+}
+
+#testimonials h2 {
+    color: #252525;
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+#testimonials .testimonial img {
+    width: 100px;
+    float: left;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+#testimonials .testimonial {
+    padding: 20px;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
+
+.text {
+    font-size: 20px;
+}
+
+.l-heading {
+    font-size: 30px;
+    line-height: 1.2;
+    color: #252525;
+}
+
+.bg-primary {
+    background: #d4d4d3;
+    color: #333;
+    opacity: 0.8;
+}
+
+/* Footer*/
+#main-footer {
+    text-align: center;
+    background: #252525;
+    padding: 20px;
+    color: #f2f2f2;
+}
+    
+    
