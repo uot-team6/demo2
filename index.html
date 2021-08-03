@@ -7,6 +7,12 @@
     <title>travelDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
+    <!--link CDN Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- Font CSS Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--francis google part-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
 <body>
@@ -33,7 +39,6 @@
 
     <section class="main-text">
         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem debitis ducimus 
-   
             facilis unde omnis ipsa cum eligendi provident, nesciunt commodi repellendus! 
             Inventore eaque et, aspernatur soluta cum sequi fugiat. Iure reiciendis ea doloremque 
             officiis aspernatur dolor voluptatum sed? Harum ipsam molestiae atque autem eveniet animi
@@ -46,7 +51,7 @@
     <main>
         <!--Search bar-->
         <div class="search-bar" id="find-place">
-            <input class="input" type="text" placeholder="Search">
+            <input class="input" type="text" placeholder="Search" id="pac-input" >
         </div>
 
          <!--Find Me and Get Places Buttons-->
@@ -55,9 +60,10 @@
             <button class="btn" id="get-places">Get Places</button>
         </div>
 
-      
-        <!-- geolocation displayed on map with user device location
-        <div id="map"></div> -->
+
+        <!--francis part-->
+        <!--geolocation displayed on map with user device location-->
+        <div id="map"></div>
 
         <!--To display the weather-->
         <div>
@@ -66,7 +72,7 @@
         </div>
 
         <!--show activities-->
-        <div>
+        <div class="activities-section">
             <h1 class="activities">Activities</h1>
             <div  id="activities-details"></div>
         </div>
@@ -79,6 +85,7 @@
     
     <!--CDN jQuery JS-->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiJEOAd53ue2j4J7ouVrEpaFjenrOp-xw&callback=initMap&libraries=&v=weekly" async></script> -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiJEOAd53ue2j4J7ouVrEpaFjenrOp-xw&callback=initAutocomplete&libraries=places&v=weekly" async></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>

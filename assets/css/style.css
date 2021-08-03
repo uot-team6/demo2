@@ -33,6 +33,7 @@ header{
 #navbar ul {
     list-style: none;
     float: right;
+    margin: 0;
 }
 
 #navbar ul li {
@@ -105,7 +106,7 @@ header{
     padding: 8px;
     font-size: 2vw;
 }
-.activities{
+.activities-section{
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -221,3 +222,69 @@ header{
 }
     
     
+/*map section*/
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 800px;
+        width: 100%;
+        align-content: center;
+      }
+      
+      /* Optional: Makes the sample page fill the window. */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+/*francis part*/
+      /*googl search box*/
+      #map #infowindow-content {
+        display: inline;
+      }
+      
+      .pac-card {
+        margin: 10px 10px 0 0;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        background-color: #fff;
+        font-family: Roboto;
+      }
+      
+      #pac-container {
+        padding-bottom: 12px;
+        margin-right: 12px;
+      }
+      
+      .pac-controls {
+        display: inline-block;
+        padding: 5px 11px;
+      }
+      
+      .pac-controls label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+      
+      #title {
+        color: #fff;
+        background-color: #4d90fe;
+        font-size: 25px;
+        font-weight: 500;
+        padding: 6px 12px;
+      }
+      
+      #target {
+        width: 345px;
+      }
+/*francis part*/
+
+
+
