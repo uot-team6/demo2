@@ -56,7 +56,6 @@ var displayWeather=function(data){
 
 //get activities according to the weather
 var getActivities=function(weatherCondition){
-    console.log(weatherCondition);
     var h2El=document.createElement("h2");
     h2El.classList="display-activity-header";
     var pEl1=document.createElement("p");
@@ -102,12 +101,9 @@ var displayActivities=function(activity){
     for(var i=0;i<activity.length;i++){
         var buttonEl=document.createElement("button");
         buttonEl.setAttribute("id","button"+i);
-        console.log(buttonEl);
         buttonEl.textContent=activity[i];
         buttonEl.classList="display_btn";
         activities.appendChild(buttonEl);
-        console.log(activity[i]);
-        
     }
 }
 getPlaces.addEventListener("click",displayLocation);

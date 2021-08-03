@@ -33,6 +33,7 @@
 
     <section class="main-text">
         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem debitis ducimus 
+   
             facilis unde omnis ipsa cum eligendi provident, nesciunt commodi repellendus! 
             Inventore eaque et, aspernatur soluta cum sequi fugiat. Iure reiciendis ea doloremque 
             officiis aspernatur dolor voluptatum sed? Harum ipsam molestiae atque autem eveniet animi
@@ -48,42 +49,38 @@
             <input class="input" type="text" placeholder="Search">
         </div>
 
-        <!--Find Me and Get Places Buttons-->
+         <!--Find Me and Get Places Buttons-->
         <div class="flex">
-            <button class="btn">Find Me</button>
-            <button class="btn" id="get-places" >Get Places</button>
+            <button class="btn" onclick="getLocation()">Find Me</button>
+            <button class="btn" id="get-places">Get Places</button>
         </div>
 
-        <!--To diaplay map-->
-        <div>
-            
-        </div>
+      
+        <!-- geolocation displayed on map with user device location
+        <div id="map"></div> -->
 
         <!--To display the weather-->
         <div>
             <h1 class="weather">Weather Details</h1>
-            <div id="weather-details">
-                
-            </div>
+            <div id="weather-details"></div>
         </div>
 
         <!--show activities-->
         <div>
             <h1 class="activities">Activities</h1>
-            <div  id="activities-details">
-
-            </div>
+            <div  id="activities-details"></div>
         </div>
-
-        <!--To display activities-->
     </main>
 
     <!--footer for the page-->
     <footer>
-
-    </footer>
-
+</footer>
+    
+    <!--CDN jQuery JS-->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiJEOAd53ue2j4J7ouVrEpaFjenrOp-xw&callback=initMap&libraries=&v=weekly" async></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
