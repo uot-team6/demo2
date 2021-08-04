@@ -2,109 +2,9 @@ var getPlaces=document.querySelector("#get-places");
 var weatherDetails=document.querySelector("#weather-details");
 var activities=document.querySelector("#activities-details");
 
-//to display location
-var displayLocation=function(event){
-    event.preventDefault();
-
-
-    getWeather(49.808,-99.9411);
-}
-
-//to get weather accoring to the location
-var getWeather=function(lat,lon){
-    var weatherApi="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=imperial&APPID=a1ebf05a20a8fd712b4baf5c960acf21";
-    fetch(weatherApi).then(function(response){
-        response.json().then(function(data){
-            weatherDetails.innerHTML=" ";
-            displayWeather(data);
-        })
-    })
-
-}
-
-//to display weather
-var displayWeather=function(data){
-    
-    for(var i=0;i<1;i++){
-        var divEl=document.createElement("div");
-        divEl.classList="three-weather";
-
-        var weatherCode=data.daily[i].weather[0].icon;
-        var icon="http://openweathermap.org/img/wn/"+weatherCode+".png";
-        var imgEl=document.createElement("img");
-        imgEl.setAttribute("src",icon);
-        divEl.appendChild(imgEl);
-        
-        var h2El=document.createElement("h2");
-        h2El.textContent="Date: "+moment.unix(data.daily[i].dt).format("Do MMM YYYY");
-        divEl.appendChild(h2El);
-
-        var arr=[data.daily[i].temp.day,data.daily[i].wind_speed,data.daily[i].humidity];
-        var arrName=["Temp: ","Wind: ","Humidity: "];
-        var arrSymbol=["° F"," MPH"," %"];
-        for(var j=0;j<arr.length;j++){
-            var pEl=document.createElement("p");
-            pEl.textContent=arrName[j]+arr[j]+arrSymbol[j];
-            divEl.appendChild(pEl);
-        }
-        weatherDetails.appendChild(divEl);
-        weatherDetails.style.padding="20px";
-
-        getActivities(data.daily[0].weather[0].main);
-    }
-}
 //francis part
 //google map section
 //map search
-let map, infoWindow;
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 6,
-  });
-  infoWindow = new google.maps.InfoWindow();
-  const locationButton = document.createElement("button");
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-
-          getWeather(pos.lat,pos.lng);
-
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  });
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
-}
 function initAutocomplete() {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 43.973810027649364, lng: -79.27475048680624},
@@ -140,6 +40,7 @@ function initAutocomplete() {
         console.log("Returned place contains no geometry");
         return;
       }
+      console.log('gometry', place.geometry);
       const icon = {
         url: place.icon,
         size: new google.maps.Size(71, 71),
@@ -156,7 +57,6 @@ function initAutocomplete() {
           position: place.geometry.location,
         })
       );
-
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -168,9 +68,70 @@ function initAutocomplete() {
   });
 }
 
+//to display the weather for current location
+var x = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
 
-//francis
+function showPosition(position) {
+  getWeather(position.coords.latitude,position.coords.longitude);
+}
 
+
+//francis end
+
+
+
+//Honey's part start
+
+//get weather from lat and lon
+var getWeather=function(lat,lon){
+  var weatherApi="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=imperial&APPID=a1ebf05a20a8fd712b4baf5c960acf21";
+  fetch(weatherApi).then(function(response){
+      response.json().then(function(data){
+          weatherDetails.innerHTML=" ";
+          displayWeather(data);
+      })
+  })
+
+}
+
+//to display weather
+var displayWeather=function(data){
+  
+  for(var i=0;i<1;i++){
+      var divEl=document.createElement("div");
+      divEl.classList="three-weather";
+
+      var weatherCode=data.daily[i].weather[0].icon;
+      var icon="http://openweathermap.org/img/wn/"+weatherCode+".png";
+      var imgEl=document.createElement("img");
+      imgEl.setAttribute("src",icon);
+      divEl.appendChild(imgEl);
+      
+      var h2El=document.createElement("h2");
+      h2El.textContent="Date: "+moment.unix(data.daily[i].dt).format("Do MMM YYYY");
+      divEl.appendChild(h2El);
+
+      var arr=[data.daily[i].temp.day,data.daily[i].wind_speed,data.daily[i].humidity];
+      var arrName=["Temp: ","Wind: ","Humidity: "];
+      var arrSymbol=["° F"," MPH"," %"];
+      for(var j=0;j<arr.length;j++){
+          var pEl=document.createElement("p");
+          pEl.textContent=arrName[j]+arr[j]+arrSymbol[j];
+          divEl.appendChild(pEl);
+      }
+      weatherDetails.appendChild(divEl);
+      weatherDetails.style.padding="20px";
+
+      getActivities(data.daily[0].weather[0].main);
+  }
+}
 //get activities according to the weather
 var getActivities=function(weatherCondition){
     var h2El=document.createElement("h2");
@@ -223,5 +184,5 @@ var displayActivities=function(activity){
         activities.appendChild(buttonEl);
     }
 }
-getPlaces.addEventListener("click",displayLocation);
+// getPlaces.addEventListener("click",displayLocation);
 

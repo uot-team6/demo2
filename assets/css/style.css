@@ -226,9 +226,9 @@ header{
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
        #map {
-        height: 800px;
-        width: 100%;
-        align-content: center;
+        height: 400px;
+        width: 70%;
+        margin: 0 auto;
       }
       
       /* Optional: Makes the sample page fill the window. */
@@ -242,9 +242,9 @@ header{
 
 /*francis part*/
       /*googl search box*/
-      #map #infowindow-content {
+      /* #map #infowindow-content {
         display: inline;
-      }
+      } */
       
       .pac-card {
         margin: 10px 10px 0 0;
