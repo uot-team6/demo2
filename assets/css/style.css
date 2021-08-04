@@ -132,6 +132,17 @@ header{
     width: 70%;
     margin: 0 auto;
 }
+.near-by{
+    font-size: 2vw;
+    padding: 8px;
+}
+.nearby-section{
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    background-color: #252525;
+    color: #f2f2f2;
+}
 .find{
     color: #f2f2f2;
     padding: 8px;
@@ -167,7 +178,7 @@ header{
     cursor: pointer;
 }
 .display_btn:hover{
-    background-color: #a43232;
+    background-color:rgba(164, 50, 50,0.5);
 }
 #about-info .info-right {
     float: right;

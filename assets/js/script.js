@@ -70,7 +70,6 @@ function initAutocomplete() {
   });
 }
 
-//added by honey
 //to get lat and long for the page for the page
 function GetLatlong() {
   var geocoder = new google.maps.Geocoder();
