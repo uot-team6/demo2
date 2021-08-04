@@ -1,6 +1,7 @@
 var getPlaces=document.querySelector("#get-places");
 var weatherDetails=document.querySelector("#weather-details");
 var activities=document.querySelector("#activities-details");
+var x = document.getElementById("demo");
 
 //francis part
 //google map section
@@ -57,6 +58,7 @@ function initAutocomplete() {
           position: place.geometry.location,
         })
       );
+      GetLatlong();
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
@@ -68,8 +70,26 @@ function initAutocomplete() {
   });
 }
 
+//added by honey
+//to get lat and long for the page for the page
+function GetLatlong() {
+  var geocoder = new google.maps.Geocoder();
+  var address = document.getElementById('pac-input').value;
+
+  geocoder.geocode({
+    'address': address
+  }, function(results, status) {
+
+    if (status == google.maps.GeocoderStatus.OK) {
+      var latitude = results[0].geometry.location.lat();
+      var longitude = results[0].geometry.location.lng();
+      getWeather(latitude,longitude);
+    }
+  });
+}
+
+
 //to display the weather for current location
-var x = document.getElementById("demo");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -77,12 +97,9 @@ function getLocation() {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-
 function showPosition(position) {
   getWeather(position.coords.latitude,position.coords.longitude);
 }
-
-
 //francis end
 
 
@@ -107,7 +124,7 @@ var displayWeather=function(data){
   for(var i=0;i<1;i++){
       var divEl=document.createElement("div");
       divEl.classList="three-weather";
-
+      divEl.innerHTML=" ";
       var weatherCode=data.daily[i].weather[0].icon;
       var icon="http://openweathermap.org/img/wn/"+weatherCode+".png";
       var imgEl=document.createElement("img");
@@ -134,10 +151,9 @@ var displayWeather=function(data){
 }
 //get activities according to the weather
 var getActivities=function(weatherCondition){
-    var h2El=document.createElement("h2");
+    var h2El=document.createElement("h3");
     h2El.classList="display-activity-header";
-    var pEl1=document.createElement("p");
-    var pEl2=document.createElement("p");
+    activities.innerHTML="";
     if(weatherCondition=="Clouds"){
         h2El.textContent="Today's weather is going to be cloudly."
         activities.appendChild(h2El);

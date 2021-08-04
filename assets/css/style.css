@@ -10,6 +10,7 @@ body {
 header{
     position: sticky;
     top: 0;
+    z-index: 1;
 }
 
 #navbar {
@@ -97,7 +98,7 @@ header{
     display: flex;
     justify-content: center;
 }
-.weather, .activities {
+.weather, .activities{
     width: 70%;
     display: block;
     margin: 0 auto;
@@ -127,21 +128,46 @@ header{
     margin: 0 auto;
 }
 #activities-details{
-    background-color:rgba(164, 50, 50,0.5) ;
-    color: #f2f2f2;
+    background-color:#d4d4d3 ;
     width: 70%;
     margin: 0 auto;
+}
+.find{
+    color: #f2f2f2;
+    padding: 8px;
+    font-size: 2vw;
+}
+.find-section{
+    display: flex;
+    justify-content: space-between;
+    background-color: #252525;
+    width: 70%;
+    margin: 0 auto;
+}
+.find-btn{
+    background-color:rgba(164, 50, 50,0) ;
+    font-size: 2vw;
+    text-align: left;
+    padding: 6px;
+    cursor: pointer;
+    color: #f2f2f2;
+}
+.find-btn:hover{
+    background-color:#a43232;
 }
 
 .display_btn{
     display: block;
-    background-color:rgba(164, 50, 50,0) ;
+    background-color:#d4d4d3 ;
     width: 100%;
     margin: 0 auto;
     font-size: 2vw;
     text-align: left;
     padding: 4px;
     cursor: pointer;
+}
+.display_btn:hover{
+    background-color: #a43232;
 }
 #about-info .info-right {
     float: right;
@@ -231,21 +257,10 @@ header{
         margin: 0 auto;
       }
       
-      /* Optional: Makes the sample page fill the window. */
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
 
 
 /*francis part*/
       /*googl search box*/
-      /* #map #infowindow-content {
-        display: inline;
-      } */
-      
       .pac-card {
         margin: 10px 10px 0 0;
         border-radius: 2px 0 0 2px;
