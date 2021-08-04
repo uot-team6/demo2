@@ -1,218 +1,109 @@
-//google map section
-//43.973810027649364, -79.27475048680624
-let map, infoWindow;
+var getPlaces=document.querySelector("#get-places");
+var weatherDetails=document.querySelector("#weather-details");
+var activities=document.querySelector("#activities-details");
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 43.973810027649364, lng: -79.27475048680624 },
-    zoom: 6,
-  });
-  infoWindow = new google.maps.InfoWindow();
-  const locationButton = document.createElement("button");
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
-    }
-  });
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
-}
-
-
-
-//weather section
-//Declare variables to store the searched city
-var city="";
-// variable declaration
-var searchCity = $("#search-city");
-var searchButton = $("#search-button");
-var clearButton = $("#clear-history");
-var currentCity = $("#current-city");
-var currentTemperature = $("#temperature");
-var currentHumidty= $("#humidity");
-var currentWSpeed=$("#wind-speed");
-var currentUvindex= $("#uv-index");
-var sCity=[];
-// searches the city to see if it exists in the entries from the storage
-function find(c){
-    for (var i=0; i<sCity.length; i++){
-        if(c.toUpperCase()===sCity[i]){
-            return -1;
-        }
-    }
-    return 1;
-}
-//Set up the API key
-var APIKey="9da88febb15bf05b3285a25c7ee03b19";
-// Display the curent and future weather to the user after grabing the city form the input text box.
-function displayWeather(event){
+//to display location
+var displayLocation=function(event){
     event.preventDefault();
-    if(searchCity.val().trim()!==""){
-        city=searchCity.val().trim();
-        currentWeather(city);
-    }
-}
-//  create the AJAX call
-function currentWeather(city){
-    // build the URL to get a data from server side.
-    var queryURL= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
-    $.ajax({
-        url:queryURL,
-        method:"GET",
-    }).then(function(response){
 
-        // parse the response to display the current weather including the City name. the Date and the weather icon. 
-        console.log(response);
-        //Dta object from server side Api for icon property.
-        var weathericon= response.weather[0].icon;
-        var iconurl="https://openweathermap.org/img/wn/"+weathericon +"@2x.png";
-  
-        var date=new Date(response.dt*1000).toLocaleDateString();
-        //parse the response for name of city and the date and icon.
-        $(currentCity).html(response.name +"("+date+")" + "<img src="+iconurl+">");
-        // parse the response to display the current temperature.
-        // Convert the temp to fahrenheit
 
-        var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-        $(currentTemperature).html((tempF).toFixed(2)+"&#8457");
-        // Display the Humidity
-        $(currentHumidty).html(response.main.humidity+"%");
-        //Display Wind speed and convert to MPH
-        var ws=response.wind.speed;
-        var windsmph=(ws*2.237).toFixed(1);
-        $(currentWSpeed).html(windsmph+"MPH");
-        // Display UVIndex.
-        //By Geographic coordinates method and using appid and coordinates as a parameterto build our uv query url inside the function below.
-        UVIndex(response.coord.lon,response.coord.lat);
-        forecast(response.id);
-        if(response.cod==200){
-            sCity=JSON.parse(localStorage.getItem("cityname"));
-            console.log(sCity);
-            if (sCity==null){
-                sCity=[];
-                sCity.push(city.toUpperCase()
-                );
-                localStorage.setItem("cityname",JSON.stringify(sCity));
-                addToList(city);
-            }
-            else {
-                if(find(city)>0){
-                    sCity.push(city.toUpperCase());
-                    localStorage.setItem("cityname",JSON.stringify(sCity));
-                    addToList(city);
-                }
-            }
-        }
+    getWeather(49.808,-99.9411);
+}
 
-    });
+//to get weather accoring to the location
+var getWeather=function(lat,lon){
+    var weatherApi="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=imperial&APPID=a1ebf05a20a8fd712b4baf5c960acf21";
+    fetch(weatherApi).then(function(response){
+        response.json().then(function(data){
+            weatherDetails.innerHTML=" ";
+            displayWeather(data);
+        })
+    })
+
 }
-    // returns the UVIindex response
-function UVIndex(ln,lt){
-    //the url for uvindex.
-    var uvqURL="https://api.openweathermap.org/data/2.5/uvi?appid="+ APIKey+"&lat="+lt+"&lon="+ln;
-    $.ajax({
-            url:uvqURL,
-            method:"GET"
-            }).then(function(response){
-                $(currentUvindex).html(response.value);
-            });
-}
+
+//to display weather
+var displayWeather=function(data){
     
-// display the 5 days forecast for the searched city.
-function forecast(cityid){
-    var dayover= false;
-    var queryforcastURL="https://api.openweathermap.org/data/2.5/forecast?id="+cityid+"&appid="+APIKey;
-    $.ajax({
-        url:queryforcastURL,
-        method:"GET"
-    }).then(function(response){
+    for(var i=0;i<1;i++){
+        var divEl=document.createElement("div");
+        divEl.classList="three-weather";
+
+        var weatherCode=data.daily[i].weather[0].icon;
+        var icon="http://openweathermap.org/img/wn/"+weatherCode+".png";
+        var imgEl=document.createElement("img");
+        imgEl.setAttribute("src",icon);
+        divEl.appendChild(imgEl);
         
-        for (i=0;i<5;i++){
-            var date= new Date((response.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
-            var iconcode= response.list[((i+1)*8)-1].weather[0].icon;
-            var iconurl="https://openweathermap.org/img/wn/"+iconcode+".png";
-            var tempK= response.list[((i+1)*8)-1].main.temp;
-            var tempF=(((tempK-273.5)*1.80)+32).toFixed(2);
-            var humidity= response.list[((i+1)*8)-1].main.humidity;
-        
-            $("#fDate"+i).html(date);
-            $("#fImg"+i).html("<img src="+iconurl+">");
-            $("#fTemp"+i).html(tempF+"&#8457");
-            $("#fHumidity"+i).html(humidity+"%");
+        var h2El=document.createElement("h2");
+        h2El.textContent="Date: "+moment.unix(data.daily[i].dt).format("Do MMM YYYY");
+        divEl.appendChild(h2El);
+
+        var arr=[data.daily[i].temp.day,data.daily[i].wind_speed,data.daily[i].humidity];
+        var arrName=["Temp: ","Wind: ","Humidity: "];
+        var arrSymbol=["° F"," MPH"," %"];
+        for(var j=0;j<arr.length;j++){
+            var pEl=document.createElement("p");
+            pEl.textContent=arrName[j]+arr[j]+arrSymbol[j];
+            divEl.appendChild(pEl);
         }
-        
-    });
-}
+        weatherDetails.appendChild(divEl);
+        weatherDetails.style.padding="20px";
 
-//add the passed city on the search history
-function addToList(c){
-    var listEl= $("<li>"+c.toUpperCase()+"</li>");
-    $(listEl).attr("class","list-group-item");
-    $(listEl).attr("data-value",c.toUpperCase());
-    $(".list-group").append(listEl);
-}
-// display the past search again when the list group item is clicked in search history
-function invokePastSearch(event){
-    var liEl=event.target;
-    if (event.target.matches("li")){
-        city=liEl.textContent.trim();
-        currentWeather(city);
+        getActivities(data.daily[0].weather[0].main);
     }
-
 }
 
-// render function
-function loadlastCity(){
-    $("ul").empty();
-    var sCity = JSON.parse(localStorage.getItem("cityname"));
-    if(sCity!==null){
-        sCity=JSON.parse(localStorage.getItem("cityname"));
-        for(i=0; i<sCity.length;i++){
-            addToList(sCity[i]);
-        }
-        city=sCity[i-1];
-        currentWeather(city);
+//get activities according to the weather
+var getActivities=function(weatherCondition){
+    var h2El=document.createElement("h2");
+    h2El.classList="display-activity-header";
+    var pEl1=document.createElement("p");
+    var pEl2=document.createElement("p");
+    if(weatherCondition=="Clouds"){
+        h2El.textContent="Today's weather is going to be cloudly."
+        activities.appendChild(h2El);
+        var cloud_activities=["Visit a Museum/Art-Gallery/Library","Go see a movie","Go to shopping","Go visit club/cafe/resturant"];
+        displayActivities(cloud_activities);
     }
-
+    else if(weatherCondition=="Rain"){
+        var rain_activities=["Visit a Museum/Art-Gallery/Library","Go see a movie","Go to shopping","Go visit club/cafe/resturant"];
+        h2El.textContent="Today is going to Rain. Make sure to carry an Umbrella."
+        activities.appendChild(h2El); 
+        displayActivities(rain_activities);
+    }
+    else if(weatherCondition=="Thunderstrom"){
+        h2El.textContent="It's not recomended to go out because there are chances of thunder strom today!";
+        activities.appendChild(h2El); 
+    }
+    else if(weatherCondition=="Drizzle"){
+        h2El.textContent="Today there are chances of Drizzle.So make sure to carry an umbrella.";
+        activities.appendChild(h2El); 
+        var rain_activities=["Visit a Museum/Art-Gallery/Library","Go see a movie","Go to shopping","Go visit club/cafe/resturant"];
+        displayActivities(rain_activities);
+    }
+    else if(weatherCondition=="Clear"){
+        h2El.textContent="Today's weather is going to be clear."
+        activities.appendChild(h2El);
+        var clear_activities=["Go to a beach","Go to a Park","Go see a movie"];
+        displayActivities(clear_activities);
+    }
+    else if(weatherCondition=="Snow"){
+        h2El.textContent="Today is going to have a snowfall, so it's recommended to keep your self warm";
+        activities.appendChild(h2El);
+        var rain_activities=["Visit a Museum/Art-Gallery/Library","Go see a movie","Go to shopping","Go visit club/cafe/resturant"];
+        displayActivities(rain_activities);
+    }
 }
-//Clear the search history 
-function clearHistory(event){
-    event.preventDefault();
-    sCity=[];
-    localStorage.removeItem("cityname");
-    document.location.reload();
 
+//to display activities according to the weather
+var displayActivities=function(activity){
+    for(var i=0;i<activity.length;i++){
+        var buttonEl=document.createElement("button");
+        buttonEl.setAttribute("id","button"+i);
+        buttonEl.textContent=activity[i];
+        buttonEl.classList="display_btn";
+        activities.appendChild(buttonEl);
+    }
 }
-//Click Handlers part
-$("#search-button").on("click",displayWeather);
-$(document).on("click",invokePastSearch);
-$(window).on("load",loadlastCity);
+getPlaces.addEventListener("click",displayLocation);
