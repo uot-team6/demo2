@@ -4,83 +4,84 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>weatherDog</title>
+    <title>travelDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
-    <!--link CDN Bootstrap CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-    <!-- Font CSS Icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!--francis google part-->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <!--francis part-->
-    <script src="assets/js/script.js"></script>
 </head>
 
 <body>
-    <!--Main hero and navbar-->
-<section>
-    <nav id="navbar">
-        <div class="container">
-            <h1 class="logo">travelDog</h1>
-            <ul>
-                <li><a class="current" href="index.html">Home</a></li>
-                <li><a href="find-places.html">Find Places</a></li>
-                <li><a href="about-us.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-        <div class="showcase"></div>
-</section>
 
-    <div class="main-text">
-        <br>
-        <br>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem debitis ducimus 
+    <!--Main hero and navbar-->
+    <header>
+        <nav id="navbar">
+            <div class="container">
+                <h1 class="logo">travelDog</h1>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#find-place">Find Places</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!--hero image-->
+    <section>
+            <div class="showcase"></div>
+    </section>
+
+    <section class="main-text">
+        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem debitis ducimus 
+   
             facilis unde omnis ipsa cum eligendi provident, nesciunt commodi repellendus! 
             Inventore eaque et, aspernatur soluta cum sequi fugiat. Iure reiciendis ea doloremque 
             officiis aspernatur dolor voluptatum sed? Harum ipsam molestiae atque autem eveniet animi
             a quis optio. Veniam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus nemo
-            doloribus vel maxime at ratione asperiores tempora accusantium quibusdam</p>
-    </div>
+            doloribus vel maxime at ratione asperiores tempora accusantium quibusdam ratione asperiores tempora accusantium.
+        </p>
+    </section>
 
-    <!--Search bar-->
-    <div class="search-bar">
-        <input class="input" type="text" placeholder="Search">
-</div>
+    <!--main text for the page-->
+    <main>
+        <!--Search bar-->
+        <div class="search-bar" id="find-place">
+            <input class="input" type="text" placeholder="Search">
+        </div>
 
+         <!--Find Me and Get Places Buttons-->
+        <div class="flex">
+            <button class="btn" onclick="getLocation()">Find Me</button>
+            <button class="btn" id="get-places">Get Places</button>
+        </div>
 
+      
+        <!-- geolocation displayed on map with user device location
+        <div id="map"></div> -->
 
-    </div>
+        <!--To display the weather-->
+        <div>
+            <h1 class="weather">Weather Details</h1>
+            <div id="weather-details"></div>
+        </div>
 
-    <!--Find Me and Get Places Buttons-->
-    <div class="flex">
-        <button class="btn" onclick="getLocation()">Find Me</button>
-        <button class="btn">Get Places</button>
-    </div>
+        <!--show activities-->
+        <div>
+            <h1 class="activities">Activities</h1>
+            <div  id="activities-details"></div>
+        </div>
+    </main>
 
-    <!--francis part-->
-<!--geolocation displayed on map with user device location-->
-<input
-      id="pac-input"
-      class="controls"
-      type="text"
-      placeholder="Search Box"
-    />
-<div id="map"></div>
-
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initAutocomplete&libraries=places&v=weekly" async></script>
-<!--part ends-->
-
-    </body>
-      </html>
-
-   
-
-
-
-
+    <!--footer for the page-->
+    <footer id="main-footer">
+        <p>weatherDog &copy; 2021, All Rights Reserved</p>
+    </footer>
     
+    <!--CDN jQuery JS-->
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiJEOAd53ue2j4J7ouVrEpaFjenrOp-xw&callback=initMap&libraries=&v=weekly" async></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
