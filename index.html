@@ -50,6 +50,8 @@
         <div class="search-bar" id="find-place">
             <input class="input" type="text" placeholder="Search">
         </div>
+         <!--display lattitude-->
+         <p id="demo"></p>
 
          <!--Find Me and Get Places Buttons-->
         <div class="flex">
@@ -57,15 +59,9 @@
             <button class="btn" id="get-places">Get Places</button>
         </div>
 
-      
+    
         <!-- geolocation displayed on map with user device location-->
-        <input
-      id="pac-input"
-      class="controls"
-      type="text"
-      placeholder="Search Box"/>
-      <div id="map"></div>
-
+       
 
     
         <!--To display the weather-->
@@ -81,16 +77,23 @@
         </div>
     </main>
 
+    <input
+    id="pac-input"
+    class="controls"
+    type="text"
+    placeholder="Search Box"/>
+    <div id="map"></div>
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initAutocomplete&libraries=places&v=weekly" async></script>
+
     <!--footer for the page-->
     <footer id="main-footer">
         <p>weatherDog &copy; 2021, All Rights Reserved</p>
     </footer>
     
     
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initAutocomplete&libraries=places&v=weekly" async>
-    </script>
+    
 
     <!--CDN jQuery JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
