@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Document</title>
 </head>
 <body>
@@ -11,6 +12,19 @@
     <title>weatherDog</title>
     <link rel="stylesheet" href="./assets/css/style.css" /> 
     <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
+=======
+    <title>weatherDog</title>
+    <link rel="stylesheet" href="./assets/css/style.css" /> 
+    <link rel="stylesheet" href="./assets/css/bulma-rtl.min.css" /> 
+    <!--link CDN Bootstrap CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <!-- Font CSS Icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!--francis google part-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!--francis part-->
+    <script src="assets/js/script.js"></script>
+>>>>>>> 65f507cf65f44b7acc46f5f3e16f57d055e0deac
 </head>
 
 <body>
@@ -18,7 +32,11 @@
 <section>
     <nav id="navbar">
         <div class="container">
+<<<<<<< HEAD
             <h1 class="logo">weatherDog</h1>
+=======
+            <h1 class="logo">travelDog</h1>
+>>>>>>> 65f507cf65f44b7acc46f5f3e16f57d055e0deac
             <ul>
                 <li><a class="current" href="index.html">Home</a></li>
                 <li><a href="find-places.html">Find Places</a></li>
@@ -52,6 +70,7 @@
 
     <!--Find Me and Get Places Buttons-->
     <div class="flex">
+<<<<<<< HEAD
         <button class="btn">Find Me</button>
         <button class="btn">Get Places</button>
     </div>
@@ -59,3 +78,33 @@
 <footer></footer>
 </body>
 </html>
+=======
+        <button class="btn" onclick="getLocation()">Find Me</button>
+        <button class="btn">Get Places</button>
+    </div>
+
+    <!--francis part-->
+<!--geolocation displayed on map with user device location-->
+<input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="Search Box"
+    />
+<div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initAutocomplete&libraries=places&v=weekly" async></script>
+<!--part ends-->
+
+    </body>
+      </html>
+
+   
+
+
+
+
+    
+>>>>>>> 65f507cf65f44b7acc46f5f3e16f57d055e0deac
