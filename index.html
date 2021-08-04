@@ -63,13 +63,9 @@
       id="pac-input"
       class="controls"
       type="text"
-      placeholder="Search Box"
-    />
-<div id="map"></div>
-<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initAutocomplete&libraries=places&v=weekly" async></script>
-<!--part ends-->
+      placeholder="Search Box"/>
+      <div id="map"></div>
+
 
     
         <!--To display the weather-->
@@ -90,8 +86,13 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2
         <p>weatherDog &copy; 2021, All Rights Reserved</p>
     </footer>
     
-    <!--CDN jQuery JS-->
     
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTAhdEGFgHhbbmtApHcGHmOB2qDTfbCp4&callback=initAutocomplete&libraries=places&v=weekly" async>
+    </script>
+
+    <!--CDN jQuery JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
