@@ -63,6 +63,33 @@ function initAutocomplete() {
     });
   }
 
+
+  //honey part
+  //weather and activities
+  var getPlaces=document.querySelector("#get-places");
+var weatherDetails=document.querySelector("#weather-details");
+var activities=document.querySelector("#activities-details");
+
+//to display location
+var displayLocation=function(event){
+    event.preventDefault();
+
+
+    getWeather(49.808,-99.9411);
+}
+
+//to get weather accoring to the location
+var getWeather=function(lat,lon){
+    var weatherApi="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=imperial&APPID=a1ebf05a20a8fd712b4baf5c960acf21";
+    fetch(weatherApi).then(function(response){
+        response.json().then(function(data){
+            weatherDetails.innerHTML=" ";
+            displayWeather(data);
+        })
+    })
+
+}
+
 //to get weather accoring to the location
 var getWeather=function(lat,lon){
     var weatherApi="https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&units=imperial&APPID=a1ebf05a20a8fd712b4baf5c960acf21";
