@@ -41,7 +41,6 @@ function initAutocomplete() {
         console.log("Returned place contains no geometry");
         return;
       }
-      console.log('gometry', place.geometry);
       const icon = {
         url: place.icon,
         size: new google.maps.Size(71, 71),

@@ -117,8 +117,7 @@ header{
 }
 
 .three-weather{
-    background-color:rgba(164, 50, 50,0.5);
-    color: #f2f2f2;
+    background-color:#d4d4d3;
     padding: 15px;
     cursor: pointer;
     border: none;
@@ -126,11 +125,21 @@ header{
     width: 70%;
     height:50%;
     margin: 0 auto;
+    animation: display 3s linear;
+}
+@keyframes display {
+    0%{
+        opacity: 0.2;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 #activities-details{
     background-color:#d4d4d3 ;
     width: 70%;
     margin: 0 auto;
+    animation: display 3s linear;
 }
 .near-by{
     font-size: 2vw;
