@@ -31,7 +31,7 @@ group meeting, general ideas, assignment to each, prepping documents
 group meeting, exchange on current progress, assignments further
 
 #log 3 - google map & weather api
-francis: i had to push to main few times in demo2 repo, since google api requires url for restricted api connections. The version pushed to main is based on Val's front end, also the completed weather and activities recommendation from Honey. Jap will complete the content. 
+francis: i had to push to main few times in demo2 repo, since google api requires url for restricted api connections. The version pushed to main is based on Val's front end, also the completed weather and activities recommendation from Honey. Jap completed the content. 
 
 Honey: completed weather api meeting minimum features, including weather based on city location, displaying 5 day forecast. Also developed activity recommendations based on weather outcomes. 
 
