@@ -1,8 +1,5 @@
 # demo2
 
-<<<<<<< HEAD
-Hello
-=======
 // context
 team 6 members: Jap, Val, Honey, Bill, Francis
 Team 6 intends to design an application which serves to help users to find their locations, nearby places, activities based on displayed weather conditions. 
@@ -45,4 +42,3 @@ Future dev: honey
 
 #log 5 - future
 francis: hope to further develop on expansion of google map functions, eg: creating a dropdown menu with choices of activities, cinema, jogging routes, zoo, trails, restaurants etc. Then the map will search in libraries and myBusiness api to return the places nearby with reviews. 
->>>>>>> b58ce56aa1b69c56d11ccc4505198efda9fca270
