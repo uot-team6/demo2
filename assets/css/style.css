@@ -321,33 +321,25 @@ header{
       }
 /*francis part*/
 
-.contact-section {
-    width:100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.contact-info {
-    color: #252525;
-    max-width: 500px;
-    line-height: 70px;
-    padding-left: 50px;
-    font-size: 18px;
-}
+
 
 @media screen and (max-width: 1024px) {
-    .contact-section {
+    .main-contact{
         flex-direction: column;
     }
 }
-.contact-info,.contact-form {
-    margin:30px 30px;
-
+.contact-section{
+    width: 70%;
+    margin: 0 auto 10px auto;
+    padding: 10px;
+    background-color: #d4d4d3;
 }
+
 
 .contact-info i {
     margin-right: 20px;
     font-size: 25px;
+    padding:10px;
 }
 
 
@@ -359,7 +351,6 @@ header{
     flex:1;
 }
 .contact-form h1{
-    color:#fff;
     text-align: center;
     font-size: 50px;
     text-transform: uppercase;
@@ -369,7 +360,7 @@ header{
     background: #252525;
     color: #fff;
     border: none;
-    width: 347px;
+    width: 80%;
     height: 50px;
     padding: 12px;
     margin-bottom: 20px;
@@ -378,7 +369,7 @@ header{
     background: #252525;
     color:#fff;
     border:none;
-    width: 100%;
+    width: 80%;
     padding: 12px;
     font-size: 16px;
     min-height: 200px;
@@ -390,11 +381,9 @@ header{
     opacity: 1;
 
 }
-
 .contact{
-    text-align: center;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .textarea:hover{
@@ -414,9 +403,10 @@ header{
     letter-spacing: 2px;
     border-radius: 4px;
     cursor: pointer
-    transition: 0.5s;
-    transition-property:background;
 }
 .contact-form .send-btn:hover {
     background: #a43232;
+}
+.main-contact{
+    display: flex;
 }
