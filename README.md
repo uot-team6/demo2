@@ -12,8 +12,12 @@ HTML CSS Bulma Javascript jQuery Moment
 ## Developer
 Bill Geng, Honey Sanghani, Sivak Valeriya, Francis Lu, Japjeet Kaur
 ## website URL
-## GitHub URL
+https://uot-team6.github.io/travelDog/
+## GitHub Repository
+https://github.com/uot-team6/travelDog.git
 ## Output
+![screencapture-uot-team6-github-io-travelDog-index-html-2021-08-08-19_04_31](https://user-images.githubusercontent.com/88008666/128648268-06d490f3-1957-4f0e-95dc-06d52659eda3.png)
+
 
 
 
