@@ -1,4 +1,4 @@
-var getPlaces=document.querySelector("#get-places");
+// var getPlaces=document.querySelector("#get-places");
 var weatherDetails=document.querySelector("#weather-details");
 var activities=document.querySelector("#activities-details");
 var x = document.getElementById("demo");
@@ -199,4 +199,3 @@ var displayActivities=function(activity){
     }
 }
 // getPlaces.addEventListener("click",displayLocation);
-
